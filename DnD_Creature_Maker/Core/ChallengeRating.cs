@@ -17,8 +17,9 @@ namespace DnD_Creature_Maker
         public int LowHP { get; set; }
         public int HighHP { get; set; }
         public int XP { get; set; }
-        
+        //don't expand the region please
         #region
+        //i told you, anyway, here's a object containing a ton of data about CR in DnD!
         public static List<ChallengeRating> ChallengeRatings = new List<ChallengeRating>
         {
             new ChallengeRating {Index = 0, CR = "0", profBonus = 2, ArmorClass = 13, AttackBonus = 3, SaveDC = 13, LowHP = 1, HighHP = 6, XP = 10 },

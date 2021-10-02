@@ -11,5 +11,6 @@ namespace DnD_Creature_Maker
         public int spellLevel { get; set; }
         public int spellSlots { get; set; }
         public List<string> Spell_Names = new List<string>();
+        //tbh this isn't too advanced, or maybe it is, couldn't tell ya
     }
 }

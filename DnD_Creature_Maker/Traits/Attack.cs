@@ -21,10 +21,8 @@ namespace DnD_Creature_Maker
         public string HitText { get; set; }
         public string Hit_Damage_Type { get; set; }
 
-        public Attack() { }
-
         public Attack(string attack, string bonus, int reach, int rangeClose, int rangeFar, string target, int hitAverageDamage, int hitDiceNumber, int hitDiceSize, int hitDamageBonus, string damageType, string hit)
-        {
+        {//I hope nothing has to inherit this, whoo wee, a lot of info contained right here
             _Attack = attack;
             Bonus = bonus;
             Reach = reach;

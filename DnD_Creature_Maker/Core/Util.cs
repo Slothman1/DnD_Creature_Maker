@@ -5,13 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DnD_Creature_Maker.Core
-{
+{//also an outdated class, also set to be removed
     public class Util
     {
         public Util() { }
-        public int avgRoll(int count, int dice)
-        {
-            return Math.Floor(count * ((dice + 1) / 2));
-        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DnD_Creature_Maker.Core
-{
+{//probably an outdated class, might get nae nae'd later
     public class Dice
     {
         public int d1 { get => 1; }

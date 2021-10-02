@@ -8,6 +8,7 @@ namespace DnD_Creature_Maker
 {
     public class Basics
     {
+        //data making is just ctrl + c, ctrl + v
         public List<string> DamageImmunities = new List<string>();
         public List<string> ConditionImmunities = new List<string>();
         public List<string> DamageVulnerability = new List<string>();

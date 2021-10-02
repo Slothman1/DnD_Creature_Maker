@@ -17,7 +17,7 @@ namespace DnD_Creature_Maker
             Title = title;
             Ability = ability;
         }
-        public string ProperName()
+        public string ProperName() //probably should make this a struct or some inherited thing, however, I probably know how but this is easier
         {
             string s = Regex.Replace(Title, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
             return s;
