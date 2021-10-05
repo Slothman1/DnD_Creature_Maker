@@ -7,19 +7,17 @@ using System.Threading.Tasks;
 
 namespace DnD_Creature_Maker
 {
-    public class Ability
+    public class Ability : Action
     {
-        public string Title { get; set;}
-        public string Description { get; set; }
         public bool isDamage { get; set; }
         public bool isSpell { get; set; }
-        public Attack attack { get; set; }
         public int saveDC { get; set; }
 
-        public string ProperName()
+        public Ability(string title, string description, bool Damage, bool Spell, int save) : base (title, description)
         {
-            string s = Regex.Replace(Title, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
-            return s;
+            isDamage = Damage;
+            isSpell = Spell;
+            saveDC = save;
         }
     }
 }

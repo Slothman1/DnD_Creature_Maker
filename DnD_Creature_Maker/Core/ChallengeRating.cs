@@ -58,7 +58,6 @@ namespace DnD_Creature_Maker
             new ChallengeRating {Index = 33, CR = "30", profBonus = 9, ArmorClass = 19, AttackBonus = 14, SaveDC = 23, LowHP = 806, HighHP = 850, XP = 155000 },
         };
         #endregion
-
         static public ChallengeRating FindCRByHP(int hp)
         {
             foreach (ChallengeRating challenge in ChallengeRatings)

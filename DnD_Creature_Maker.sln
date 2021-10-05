@@ -5,9 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "DnD_Creature_Maker (Package)", "DnD_Creature_Maker (Package)\DnD_Creature_Maker (Package).wapproj", "{9968F190-F5B5-4D52-B013-0ADD207E6071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnD_Creature_Maker", "DnD_Creature_Maker\DnD_Creature_Maker.csproj", "{CAD6810F-7C11-400B-B4AD-CFBFD8452A9A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A24210F4-952D-4076-9CA2-66A65E5C8878}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnD_Creature_Maker", "DnD_Creature_Maker\DnD_Creature_Maker.csproj", "{CAD6810F-7C11-400B-B4AD-CFBFD8452A9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,22 +53,6 @@ Global
 		{CAD6810F-7C11-400B-B4AD-CFBFD8452A9A}.Release|x64.Build.0 = Release|x64
 		{CAD6810F-7C11-400B-B4AD-CFBFD8452A9A}.Release|x86.ActiveCfg = Release|x86
 		{CAD6810F-7C11-400B-B4AD-CFBFD8452A9A}.Release|x86.Build.0 = Release|x86
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Debug|arm64.Build.0 = Debug|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Debug|x64.Build.0 = Debug|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Debug|x86.Build.0 = Debug|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Release|arm64.ActiveCfg = Release|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Release|arm64.Build.0 = Release|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Release|x64.ActiveCfg = Release|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Release|x64.Build.0 = Release|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Release|x86.ActiveCfg = Release|Any CPU
-		{A24210F4-952D-4076-9CA2-66A65E5C8878}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
