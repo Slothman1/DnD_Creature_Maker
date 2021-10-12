@@ -30,10 +30,10 @@ namespace DnD_Creature_Maker
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
-        public App()
+        /*public App()
         {
             this.InitializeComponent();
-        }
+        }*/
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

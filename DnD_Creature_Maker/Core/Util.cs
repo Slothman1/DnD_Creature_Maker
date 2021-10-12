@@ -8,6 +8,11 @@ namespace DnD_Creature_Maker.Core
 {//also an outdated class, also set to be removed
     public class Util
     {
-        public Util() { }
+        public static void Main()
+        {
+            Input input = new Input();
+            input.LoadData("D:\\Projects\\DnD_Creature_Maker\\DnD_Creature_Maker\\Json\\Animated Armour.json");
+
+        }
     }
 }
