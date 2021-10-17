@@ -25,11 +25,10 @@ namespace DnD_Creature_Maker
             {
                 file = reader.ReadString();
                 Console.WriteLine(file);
-                Rootobject jsonMonster = new Rootobject();
-                jsonMonster = JsonSerializer.Deserialize<Rootobject>(file);
+                Basics jsonMonster = new Basics();
+                jsonMonster = JsonSerializer.Deserialize<Basics>(file);
 
                 Console.Write(jsonMonster.ToString());
-
             }
             catch(Exception e)
             {

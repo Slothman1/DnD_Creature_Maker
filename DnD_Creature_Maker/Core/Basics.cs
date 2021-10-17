@@ -9,17 +9,18 @@ namespace DnD_Creature_Maker
     public class Basics
     {
         //data making is just ctrl + c, ctrl + v
-        public List<string> DamageImmunities = new List<string>();
-        public List<string> ConditionImmunities = new List<string>();
-        public List<string> DamageVulnerability = new List<string>();
-        public List<string> SavingThrowBonuses = new List<string>();
-        public List<string> SkillBonuses = new List<string>();
+        public List<string> _DamageImmunities = new List<string>();
+        public List<string> _ConditionImmunities = new List<string>();
+        public List<string> _DamageVulnerability = new List<string>();
+        public List<string> _DamageResistance = new List<string>();
+        public List<string> _SavingThrowBonuses = new List<string>();
+        public List<string> _SkillBonuses = new List<string>();
 
-        public List<string> _Senses = new List<string>();
+        public List<string> _senses = new List<string>();
         public List<string> _languages = new List<string>();
 
         public List<Ability> _Abilities = new List<Ability>();
-        public List<Ability> _Actions = new List<Ability>();
+        public List<string> _Actions = new();
         public List<Ability> _Reactions = new List<Ability>();
         public List<LegendaryActions> _Legendaries = new List<LegendaryActions>();
         public List<string> _advancedSpells = new List<string>();
@@ -27,45 +28,102 @@ namespace DnD_Creature_Maker
 
         public string LegendaryActions { get; set; }
 
-        public string Title = "";
-        public int STR, DEX, CON, INT, WIS, CHA, proficiency = 0;
-        public string Speed = "";
-        public static string AC = "";
-        public static string HP = "";
-
-        public static string CreatureName = "";
-        public static string CreatureSize = "";
-        public static string CreatureType = "";
-        public static string CreatureAlign = "";
-    }
+        private static string[] AC;
+        private static string[] HP;
+        private string[] speed;
 
 
-    public class Rootobject
-    {
         public string name { get; set; }
+        public string ArmorClass
+        {
+            get { return AC[0]; }
+            set { AC = value.Replace(")", "").Split(" ("); }
+        }
+        public string HitPoints
+        {
+            get { return HP[0]; }
+            set { HP = value.Replace(")", "").Split(" ("); }
+        }
+        public string Speed
+        {
+            get { return speed[0]; }
+            set { speed = value.Split(", "); }
+        }
+
         public string meta { get; set; }
-        public string ArmorClass { get; set; }
-        public string HitPoints { get; set; }
-        public string Speed { get; set; }
-        public string STR { get; set; }
-        public string STR_mod { get; set; }
-        public string DEX { get; set; }
-        public string DEX_mod { get; set; }
-        public string CON { get; set; }
-        public string CON_mod { get; set; }
-        public string INT { get; set; }
-        public string INT_mod { get; set; }
-        public string WIS { get; set; }
-        public string WIS_mod { get; set; }
-        public string CHA { get; set; }
-        public string CHA_mod { get; set; }
+        //monster attribute getter and setters
+        #region
+        private int _STR, _DEX, _CON, _INT, _WIS, _CHA;
+        public string STR { set => _STR = int.Parse(value); }
+        public string DEX { set => _DEX = int.Parse(value); }
+        public string CON { set => _CON = int.Parse(value); }
+        public string INT { set => _INT = int.Parse(value); }
+        public string WIS { set => _WIS = int.Parse(value); }
+        public string CHA { set => _CHA = int.Parse(value); }
+        public int GetSTR { get => _STR; }
+        public int GetDEX { get => _DEX; }
+        public int GetCON { get => _CON; }
+        public int GetINT { get => _INT; }
+        public int GetWIS { get => _WIS; }
+        public int GetCHA { get => _CHA; }
+        #endregion
+
+        public string Languages
+        {
+            set
+            {
+                foreach (string i in value.Split(", "))
+                    _languages.Add(i);
+            }
+        }
+        public string DamageVulnerabilities
+        {
+            set
+            {
+                foreach (string i in value.Split(", "))
+                    _DamageVulnerability.Add(i);
+            }
+        }
+        public string DamageResistances 
+        {
+            set
+            {
+                foreach (string i in value.Split(", "))
+                    _DamageResistance.Add(i);
+            }
+        }
+        public string ConditionImmunities
+        {
+            set
+            {
+                foreach (string i in value.Split(", "))
+                    _ConditionImmunities.Add(i);
+            }
+        }
         public string DamageImmunities { get; set; }
-        public string ConditionImmunities { get; set; }
+        #region
+        Util Util = new();
+        public int STR_mod { get => Util.Mod_Return(GetSTR); }
+        public int DEX_mod { get => Util.Mod_Return(GetDEX); }
+        public int CON_mod { get => Util.Mod_Return(GetCON); }
+        public int INT_mod { get => Util.Mod_Return(GetINT); }
+        public int WIS_mod { get => Util.Mod_Return(GetWIS); }
+        public int CHA_mod { get => Util.Mod_Return(GetCHA); }
+
+
         public string Senses { get; set; }
-        public string Languages { get; set; }
+
         public string Challenge { get; set; }
         public string Traits { get; set; }
-        public string Actions { get; set; }
-    }
+        public string Actions
+        {
+            set
+            {
+                foreach (string i in value.Split(" </p>"))
+                    _Actions.Add(i);
+            }
+        }
 
+        #endregion
+    }
 }
