@@ -13,7 +13,7 @@ namespace DnD_Creature_Maker
         public bool isSpell { get; set; }
         public int saveDC { get; set; }
 
-        public Ability(string title, string description, bool Damage, bool Spell, int save) : base (title, description)
+        public Ability(string title, string description, bool Damage, bool Spell, int save) : base(title, description)
         {
             isDamage = Damage;
             isSpell = Spell;

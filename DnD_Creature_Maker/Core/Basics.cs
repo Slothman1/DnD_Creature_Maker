@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace DnD_Creature_Maker
 {
@@ -20,7 +21,7 @@ namespace DnD_Creature_Maker
         public List<string> _languages = new List<string>();
 
         public List<Ability> _Abilities = new List<Ability>();
-        public List<string> _Actions = new();
+        public List<Attack> _Actions = new();
         public List<Ability> _Reactions = new List<Ability>();
         public List<LegendaryActions> _Legendaries = new List<LegendaryActions>();
         public List<string> _advancedSpells = new List<string>();
@@ -39,7 +40,7 @@ namespace DnD_Creature_Maker
             get { return AC[0]; }
             set { AC = value.Replace(")", "").Split(" ("); }
         }
-        public string HitPoints
+        public static string HitPoints
         {
             get { return HP[0]; }
             set { HP = value.Replace(")", "").Split(" ("); }
@@ -84,7 +85,7 @@ namespace DnD_Creature_Maker
                     _DamageVulnerability.Add(i);
             }
         }
-        public string DamageResistances 
+        public string DamageResistances
         {
             set
             {
@@ -102,7 +103,7 @@ namespace DnD_Creature_Maker
         }
         public string DamageImmunities { get; set; }
         #region
-        Util Util = new();
+        private readonly Util Util = new();
         public int STR_mod { get => Util.Mod_Return(GetSTR); }
         public int DEX_mod { get => Util.Mod_Return(GetDEX); }
         public int CON_mod { get => Util.Mod_Return(GetCON); }
@@ -113,15 +114,20 @@ namespace DnD_Creature_Maker
 
         public string Senses { get; set; }
 
-        public string Challenge { get; set; }
-        public string Traits { get; set; }
-        public string Actions
+        private int _chal;
+        public string Challenge
         {
             set
             {
-                foreach (string i in value.Split(" </p>"))
-                    _Actions.Add(i);
+                value = Regex.Replace(value, @"\(\d* XP\)", "");
+                _chal = int.Parse(value.Trim());
             }
+        }
+        public int getChallenge { get => _chal; }
+        public string Traits { get; set; }
+        public Attack[] Actions
+        {
+            set; get;
         }
 
         #endregion

@@ -3,39 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace DnD_Creature_Maker
 {
     public class Attack : Action
     {
-        public string Bonus { get; set; }
-        public int Reach { get; set;  }
-        public int Range_Close { get; set; }
-        public int Range_Far { get; set; }
-        public string Target { get; set; }
-        public int Hit_Dice_Number { get; set; }
-        public int Hit_Dice_Size { get; set; }
-        public int Hit_Damage_Bonus { get; set; }
-        public int Hit_Average_Damage { get; set; }
-        public string HitText { get; set; }
-        public string Hit_Damage_Type { get; set; }
-
-        public Attack(string attack, string bonus, int reach, int rangeClose, int rangeFar, string target, int hitAverageDamage, int hitDiceNumber, int hitDiceSize, int hitDamageBonus, string damageType, string hit, string description) 
-            : base(attack, description)
-        {//I hope nothing has to inherit this, whoo wee, a lot of info contained right here
-            Title = attack;
-            Description = description;
-            Bonus = bonus;
-            Reach = reach;
-            Range_Close = rangeClose;
-            Range_Far = rangeFar;
-            Target = target;
-            Hit_Average_Damage = hitAverageDamage;
-            Hit_Dice_Number = hitDiceNumber;
-            Hit_Dice_Size = hitDiceSize;
-            Hit_Damage_Bonus = hitDamageBonus;
-            Hit_Damage_Type = damageType;
-            HitText = hit;
+        private int _bonus;
+        public string AttackType { get; set; }
+        public string Bonus {
+            set => _bonus = int.Parse(value);
         }
+        public int GetBonus { get => _bonus; }
+        public string Reach { get; set; }
+        public string Target { get; set; }
+        public string Damage { get; set; }
+        public string DamageType { get; set; }
+
+        //public Attack(string attack, string description, string attacktype,
+        //    string bonus, string reach, string target, string damage, string damagetype)
+        //    : base(attack, description)
+        //{
+        //    Bonus = bonus;
+        //}
+        public Attack() :
+            base("temp", "temp")
+        {
+
+        }
+
+
+
+
     }
 }

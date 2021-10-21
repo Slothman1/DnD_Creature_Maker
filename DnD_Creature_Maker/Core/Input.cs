@@ -25,7 +25,7 @@ namespace DnD_Creature_Maker
             {
                 file = reader.ReadString();
                 Console.WriteLine(file);
-                Basics jsonMonster = new Basics();
+                Basics jsonMonster = new();
                 jsonMonster = JsonSerializer.Deserialize<Basics>(file);
 
                 Console.Write(jsonMonster.ToString());

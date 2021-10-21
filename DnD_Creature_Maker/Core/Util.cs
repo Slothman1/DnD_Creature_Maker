@@ -11,7 +11,7 @@ namespace DnD_Creature_Maker
         public static void Main()
         {
             Input input = new();
-            input.LoadData("D:\\Projects\\DnD_Creature_Maker\\DnD_Creature_Maker\\Json\\Treant.json");
+            input.LoadData("D:\\Projects\\DnD_Creature_Maker\\DnD_Creature_Maker\\Json\\Animated Armour.json");
 
         }
 
@@ -71,6 +71,7 @@ namespace DnD_Creature_Maker
 
 
         }
+
 
     }
 }

@@ -9,18 +9,18 @@ namespace DnD_Creature_Maker
 {
     public abstract class Action
     {
-        public virtual string Title { get; set; }
+        public virtual string Name { get; set; }
         public virtual string Description { get; set; }
 
         public Action(string title, string description)
         {
-            Title = title;
+            Name = title;
             Description = description;
         }
 
         public string ProperName()
         {
-            string s = Regex.Replace(Title, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
+            string s = Regex.Replace(Name, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
             return s;
         }
     }
