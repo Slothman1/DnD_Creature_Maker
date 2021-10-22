@@ -11,16 +11,12 @@ using System.Text.Json;
 
 namespace DnD_Creature_Maker
 {
-    public class Input
+    public static class Input
     {
-        public void LoadData(string filename)
+        public static void LoadData(string filename)
         {
-            /* FileOpenPicker open = new FileOpenPicker();
-             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-             open.FileTypeFilter.Add(".json");
-             StorageFile file = await open.PickSingleFileAsync(filename);*/
             string file;
-            StreamReader reader = new StreamReader(filename);
+            StreamReader reader = new(filename);
             try
             {
                 file = reader.ReadString();
@@ -40,6 +36,5 @@ namespace DnD_Creature_Maker
             }
             
         }
-       
     }
 }

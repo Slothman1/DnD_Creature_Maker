@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
-namespace DnD_Creature_Maker.Core
+namespace DnD_Creature_Maker
 {//probably an outdated class, might get nae nae'd later
     public class Dice
     {
@@ -16,4 +17,5 @@ namespace DnD_Creature_Maker.Core
         public int d12 { get => 12; }
         public int d20 { get => 20; }
     }
+
 }

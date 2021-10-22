@@ -14,8 +14,6 @@ namespace DnD_Creature_Maker
 
         public Action(string title, string description)
         {
-            Name = title;
-            Description = description;
         }
 
         public string ProperName()

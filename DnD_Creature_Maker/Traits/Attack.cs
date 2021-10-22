@@ -9,16 +9,16 @@ namespace DnD_Creature_Maker
 {
     public class Attack : Action
     {
-        private int _bonus;
         public string AttackType { get; set; }
-        public string Bonus {
-            set => _bonus = int.Parse(value);
-        }
-        public int GetBonus { get => _bonus; }
-        public string Reach { get; set; }
+        public int Bonus { set; get;}
+        public int Reach { get; set; }
         public string Target { get; set; }
         public string Damage { get; set; }
         public string DamageType { get; set; }
+        public string ExtraDamage { get; set; }
+        public string ExtraDamageType { get; set; }
+        public string Range { get; set; }
+        public string Uses { get; set; }
 
         //public Attack(string attack, string description, string attacktype,
         //    string bonus, string reach, string target, string damage, string damagetype)
@@ -31,9 +31,5 @@ namespace DnD_Creature_Maker
         {
 
         }
-
-
-
-
     }
 }

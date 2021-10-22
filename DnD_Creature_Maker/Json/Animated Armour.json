@@ -1,6 +1,6 @@
 {
-  "name": "Animated Armor",
-  "meta": "Medium construct, unaligned",
+  "Name": "Animated Armor",
+  "Meta": "Medium construct, unaligned",
   "ArmorClass": "18 (Natural Armor)",
   "HitPoints": "33 (6d8 + 6)",
   "Speed": "25 ft. ",
@@ -14,8 +14,17 @@
   "ConditionImmunities": "Blinded, Charmed, Deafened, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned",
   "Senses": "Blindsight 60 ft.,  Passive Perception 6",
   "Languages": "--",
-  "Challenge": "1 (200 XP)",
-  "Traits": "<p><em><strong>Antimagic Susceptibility.</strong></em> The armor is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the armor must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute. </p><p><em><strong>False Appearance.</strong></em> While the armor remains motionless, it is indistinguishable from a normal suit of armor.</p>",
+  "Challenge": "1",
+  "Traits": [
+    {
+      "Name": "Antimagic Susceptibility.",
+      "Description": "The armor is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the armor must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
+    },
+    {
+      "Name": "False Appearance.",
+      "Description": "While the armor remains motionless, it is indistinguishable from a normal suit of armor."
+    }
+  ],
   "Actions": [
     {
       "Name": "Multiattack.",
@@ -24,8 +33,8 @@
     {
       "Name": "Slam.",
       "AttackType": "Melee Weapon Attack:",
-      "Bonus": "4",
-      "Reach": "5",
+      "Bonus":4,
+      "Reach":5,
       "Target": "one target.",
       "Damage": "(1d6 + 2)",
       "DamageType": "bludgeoning"

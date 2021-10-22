@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 namespace DnD_Creature_Maker
 {
-    public class LegendaryTrait : Action
+    public class Trait : Action
     {
-        public int Cost { get; set; }
-
-        public LegendaryTrait() : base ("temp", "temp")
+        public Trait() : base("Temp", "Temp")
         {
 
         }

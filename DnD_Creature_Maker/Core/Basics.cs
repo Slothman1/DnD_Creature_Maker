@@ -9,6 +9,7 @@ namespace DnD_Creature_Maker
 {
     public class Basics
     {
+        #region
         //data making is just ctrl + c, ctrl + v
         public List<string> _DamageImmunities = new List<string>();
         public List<string> _ConditionImmunities = new List<string>();
@@ -20,27 +21,18 @@ namespace DnD_Creature_Maker
         public List<string> _senses = new List<string>();
         public List<string> _languages = new List<string>();
 
-        public List<Ability> _Abilities = new List<Ability>();
-        public List<Attack> _Actions = new();
-        public List<Ability> _Reactions = new List<Ability>();
-        public List<LegendaryActions> _Legendaries = new List<LegendaryActions>();
-        public List<string> _advancedSpells = new List<string>();
-        public List<AdvancedSpell> _advancedSpellData = new List<AdvancedSpell>();
-
-        public string LegendaryActions { get; set; }
-
         private static string[] AC;
         private static string[] HP;
         private string[] speed;
+        #endregion
 
-
-        public string name { get; set; }
+        public string Name { get; set; }
         public string ArmorClass
         {
             get { return AC[0]; }
             set { AC = value.Replace(")", "").Split(" ("); }
         }
-        public static string HitPoints
+        public string HitPoints
         {
             get { return HP[0]; }
             set { HP = value.Replace(")", "").Split(" ("); }
@@ -51,7 +43,7 @@ namespace DnD_Creature_Maker
             set { speed = value.Split(", "); }
         }
 
-        public string meta { get; set; }
+        public string Meta { get; set; }
         //monster attribute getter and setters
         #region
         private int _STR, _DEX, _CON, _INT, _WIS, _CHA;
@@ -101,34 +93,31 @@ namespace DnD_Creature_Maker
                     _ConditionImmunities.Add(i);
             }
         }
-        public string DamageImmunities { get; set; }
+        public string DamageImmunities
+        {
+            set
+            {
+                foreach (string i in value.Split(", "))
+                    _DamageImmunities.Add(i);
+            }
+        }
         #region
-        private readonly Util Util = new();
         public int STR_mod { get => Util.Mod_Return(GetSTR); }
         public int DEX_mod { get => Util.Mod_Return(GetDEX); }
         public int CON_mod { get => Util.Mod_Return(GetCON); }
         public int INT_mod { get => Util.Mod_Return(GetINT); }
         public int WIS_mod { get => Util.Mod_Return(GetWIS); }
         public int CHA_mod { get => Util.Mod_Return(GetCHA); }
-
-
+        public string SavingThrows { get; set; }
+        public string Skills { get; set; }
         public string Senses { get; set; }
-
-        private int _chal;
-        public string Challenge
-        {
-            set
-            {
-                value = Regex.Replace(value, @"\(\d* XP\)", "");
-                _chal = int.Parse(value.Trim());
-            }
-        }
-        public int getChallenge { get => _chal; }
-        public string Traits { get; set; }
-        public Attack[] Actions
-        {
-            set; get;
-        }
+        private string _challenge;
+        public string Challenge { set => _challenge = Regex.Replace(value, @"\((\d|,)*\)", ""); get => ChallengeRating.ReturnCRXP(_challenge); }
+        public Trait[] Traits { get; set; }
+        public Attack[] Actions { get; set; }
+        public int LegendaryUses { get; set; }
+        public LegendaryTrait[] LegendaryActions { get; set; }
+        public AdvancedSpell[] Spells { get; set; }
 
         #endregion
     }
