@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DnD_CM_WPF_Lib
 {
     public class AdvancedSpell
     {
+        /// <summary>
+        /// the way json desrializers work is off public properties, hence why these are all public, 
+        /// ideally they would be private, or more private, unfortunately this isn't the case
+        /// </summary>
         public int Uses { get; set; }
         public int Level { get; set; }
         public bool Slot { get; set; }

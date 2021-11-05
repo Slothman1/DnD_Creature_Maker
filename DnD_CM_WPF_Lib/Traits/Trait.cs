@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DnD_CM_WPF_Lib
+﻿namespace DnD_CM_WPF_Lib
 {
     public class Trait : Action
     {
-        public Trait() : base("Temp", "Temp")
+        //c sharpy makey me makey these ugly classes, icky ew
+        public Trait()
         {
-            Console.WriteLine(Name);
         }
     }
 }

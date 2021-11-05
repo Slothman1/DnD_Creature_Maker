@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace DnD_CM_WPF_Lib
 {
+    /// <summary>
+    /// this class is the creation of the monster itself, it takes a majority of the json data and formats it correctly,
+    /// this is like the main class and could potentially be broken down futher however i saw no reason too
+    /// </summary>
     public class Basics
     {
-        #region
+        #region lists of data that contains multiple values
         //data making is just ctrl + c, ctrl + v
         private List<string> _DamageImmunities = new();
         private List<string> _ConditionImmunities = new();
@@ -27,11 +28,8 @@ namespace DnD_CM_WPF_Lib
         private List<string> metadetails = new();
 
         #endregion
+        #region Monster details
         public string Name { get; set; }
-        public string getAC(int i)
-        {
-            return AC[i];
-        }
         public string ArmorClass
         {
             set
@@ -66,14 +64,14 @@ namespace DnD_CM_WPF_Lib
             }
             get => getspeed();
         }
-        public string getmeta(int i)
+        public string getmeta(int i) //method to keep lists private
         {
             return metadetails[i];
         }
-        public string Meta
+        public string Meta //split the data
         {
-           
-           set
+
+            set
             {
                 if (Regex.IsMatch(value, @"\(\w+, \w+\)"))
                 {
@@ -88,6 +86,7 @@ namespace DnD_CM_WPF_Lib
                 }
             }
         }
+#endregion
         //monster attribute getter and setters
         #region
         private int _STR, _DEX, _CON, _INT, _WIS, _CHA;
@@ -104,7 +103,7 @@ namespace DnD_CM_WPF_Lib
         public int GetWIS { get => _WIS; }
         public int GetCHA { get => _CHA; }
         #endregion
-
+        //all of these are appending to lists
         public string Languages
         {
             set
@@ -160,13 +159,14 @@ namespace DnD_CM_WPF_Lib
                 }
             }
         }
-        #region
+        #region mod return
         public int STR_mod { get => Util.ModReturn(GetSTR); }
         public int DEX_mod { get => Util.ModReturn(GetDEX); }
         public int CON_mod { get => Util.ModReturn(GetCON); }
         public int INT_mod { get => Util.ModReturn(GetINT); }
         public int WIS_mod { get => Util.ModReturn(GetWIS); }
         public int CHA_mod { get => Util.ModReturn(GetCHA); }
+        #endregion
         public string SavingThrows
         {
             set
@@ -207,9 +207,6 @@ namespace DnD_CM_WPF_Lib
         public Attack[] Actions { get; set; }
         public int LegendaryUses { get; set; }
         public LegendaryTrait[] LegendaryActions { get; set; }
-
-
-        #endregion
         #region return list counts
         //all in an effort to keep private things private
         public int retSTcount()

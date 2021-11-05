@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace DnD_CM_WPF_Lib
@@ -23,7 +17,7 @@ namespace DnD_CM_WPF_Lib
                 temp[i] = Regex.Replace(temp[i], @"<(\/|)\w*>", "");
             }
             return temp;
-            
+
         }
         public static string Readattack(this string str)
         {
@@ -35,5 +29,5 @@ namespace DnD_CM_WPF_Lib
 
     }
 
-    
+
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DnD_CM_WPF_Lib
+﻿namespace DnD_CM_WPF_Lib
 {
     public static class ChallengeRating
     {

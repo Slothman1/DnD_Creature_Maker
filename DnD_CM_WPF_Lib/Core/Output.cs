@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DnD_CM_WPF_Lib
 {
     public static class Output
     {
-
+        /// <summary>
+        /// returns a formatted string of the paramters of spells and spell data
+        /// </summary>
+        /// <param name="spell">needs to be advanced spell</param>
+        /// <returns>formatted string, all one line for the output</returns>
         public static string Spellblock(AdvancedSpell spell)
         {
             string returnstring = "";
@@ -75,7 +75,7 @@ namespace DnD_CM_WPF_Lib
                         {
                             returnstring += "<i>" + s + "</i>" + ", ";
                             addedData = true;
-                        } 
+                        }
                     }
                     if (addedData) { returnstring = returnstring.Substring(0, returnstring.Length - 2); }
                     returnstring += "</i></br>" + "</p>";
@@ -84,7 +84,7 @@ namespace DnD_CM_WPF_Lib
                 return returnstring;
             }
         }
-
+        //returns a formatted string of an attack, excluseds name as that was defined earlier, before this method call
         public static string AttackDescribe(Attack attack)
         {
             string returnstring = "";
@@ -128,7 +128,7 @@ namespace DnD_CM_WPF_Lib
 
             return returnstring;
         }
-
+        //this is a template for the legendary actions text, no current DnD creature has a singular legendary action hence plural is always used
         public static string legendaryplate(string name, Basics b)
         {
             return "The " + name + " can take " + b.LegendaryUses + " legendary actions, choosing from the options below. Only one legendary action can be" +

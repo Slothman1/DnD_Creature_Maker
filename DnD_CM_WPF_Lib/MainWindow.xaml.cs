@@ -1,21 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
+﻿using CefSharp;
 using Microsoft.Win32;
-
-using CefSharp;
-using CefSharp.Wpf;
+using System;
+using System.Windows;
+using System.Windows.Input;
 
 namespace DnD_CM_WPF_Lib
 {
@@ -27,7 +14,7 @@ namespace DnD_CM_WPF_Lib
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
         private string __filepath;
         private string FilePath { get => __filepath; set => __filepath = value; }
@@ -39,8 +26,8 @@ namespace DnD_CM_WPF_Lib
                 OpenFileDialog ofd = new();
 
                 ofd.Filter = "Json Files (*.json)|*.json";
-                ofd.InitialDirectory = @"D:\Projects\DnD_Creature_Maker\DnD_CM_WPF_Lib\Json";
-                //ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                //ofd.InitialDirectory = @"D:\Projects\DnD_Creature_Maker\DnD_CM_WPF_Lib\Json";
+                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 if (ofd.ShowDialog() == true)
                 {
@@ -81,7 +68,8 @@ namespace DnD_CM_WPF_Lib
             {
                 SaveFileDialog sfd = new();
                 sfd.Filter = "Image Files (*.png)|*.png";
-                
+                sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+
                 if (sfd.ShowDialog() == true)
                     Statblock.Screenshot(sfd.FileName, 0, FilePath);
             }

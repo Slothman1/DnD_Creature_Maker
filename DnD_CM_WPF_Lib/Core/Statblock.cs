@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using CefSharp;
+﻿using CefSharp;
 using CefSharp.OffScreen;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace DnD_CM_WPF_Lib
 {
@@ -15,7 +13,10 @@ namespace DnD_CM_WPF_Lib
         public static List<string> output = new();
         private static string Title = "";
         private static string savefilename = "";
-
+        /// <summary>
+        /// a method to properly return javascript so that the custom html elements are made properly
+        /// </summary>
+        /// <param name="identifier"> string of the name of the custom html tags being created</param>
         private static void AddTemplateScript(string identifier)
         {
             output.Add(@"<script>{");
@@ -23,14 +24,26 @@ namespace DnD_CM_WPF_Lib
             output.Add(@$"createCustomElement('{identifier}', templateElement.content)");
             output.Add(@"}</script>");
         }
+        /// <summary>
+        /// method to return a cone shape on the statblock, purely styleistic
+        /// </summary>
         private static void TaperedRule()
         {
             output.Add(@"<tapered-rule></tapered-rule>");
         }
+        /// <summary>
+        /// takes the URI file in the resources folder and makes a png of the DnD statblock background
+        /// </summary>
+        /// <returns>image</returns>
         private static string backgroundimage()
         {
             return File.ReadAllText("D:\\Projects\\DnD_Creature_Maker\\DnD_CM_WPF_Lib\\Resources\\file.uri");
         }
+        /// <summary>
+        /// this method has a lot of lines but not a lot of complexity, the list method of adding elements means that support for infinite traits, actions and sucha re possible
+        /// </summary>
+        /// <param name="basics"> needs the json monster so a class called later can use it</param>
+        /// <returns>returns a very long string of the html elements</returns>
         public static string OutputStatblock(Basics basics)
         {
             output.Clear();
@@ -77,8 +90,8 @@ namespace DnD_CM_WPF_Lib
 
             // Body Style
             #region
-            //output.Add(@"<body style=""background-image: url('" + backgroundimage() + @"'); background-repeat: repeat-y;"">");
-            output.Add(@"<body>");
+            output.Add(@"<body style=""background-image: url('" + backgroundimage() + @"'); background-repeat: repeat-y;"">");
+            //output.Add(@"<body>");
             output.Add(@"<template id=""tapered-rule"">");
             output.Add(@"<style>");
             output.Add(@"svg {");
@@ -393,6 +406,7 @@ namespace DnD_CM_WPF_Lib
             }
             return returnstring;
         }
+        //used in screenshot to return the proper height
         private static int BrowserHeight(ChromiumWebBrowser b)
         {
             // Get Document Height
@@ -412,6 +426,7 @@ namespace DnD_CM_WPF_Lib
             if (task.Result.Result == null) { return 0; }
             return Convert.ToInt32(task.Result.Result.ToString());
         }
+        //used to wait time, useful when making browsers to enable slower PCs to not run into errors
         private static Task Delay(double milliseconds)
         {
             var tcs = new TaskCompletionSource<bool>();
@@ -422,6 +437,12 @@ namespace DnD_CM_WPF_Lib
             timer.Start();
             return tcs.Task;
         }
+        /// <summary>
+        /// creates a new browser instance and then makes an image of that, exporting a bitmap
+        /// </summary>
+        /// <param name="filename"> this needs to be the file location of where to save the .png file</param>
+        /// <param name="zoomlevel">shouldn't really be anything but 0, however may be usedful if trying to make the image bigger, through not quite working correctly</param>
+        /// <param name="FileData">needs to be the filepath of the initial json file</param>
         public static async void Screenshot(string filename, int zoomlevel, string FileData)
         {
             var browser = new ChromiumWebBrowser();
@@ -438,7 +459,7 @@ namespace DnD_CM_WPF_Lib
                 tall = BrowserHeight(browser);
                 System.Threading.Thread.Sleep(100);
             }
-            
+
             wide *= zoomlevel + 1;
             tall *= zoomlevel + 1;
             browser.Size = new(wide, tall);
@@ -470,7 +491,11 @@ namespace DnD_CM_WPF_Lib
             }
             catch (Exception ex) { Console.WriteLine("Error Saving File." + Environment.NewLine + "Error: " + ex.Message); }
         }
-
+        /// <summary>
+        /// takes in the data from the jsonmonster instance and formats it to the stablock
+        /// using the same tactics as from the output statblock
+        /// </summary>
+        /// <param name="monster">json monster</param>
         private static void OutputStatblockData(Basics monster)
         {
             output.Add(@"");
@@ -580,7 +605,7 @@ namespace DnD_CM_WPF_Lib
             output.Add(@"<p>" + monster.Challenge + "</p>");
             output.Add(@"</property-line>");
             output.Add(@"</top-stats>");
-            
+
             if (monster.Traits != null)
             {
                 if (monster.Traits.Length > 0)
@@ -619,7 +644,7 @@ namespace DnD_CM_WPF_Lib
                     output.Add(@"</property-block>");
                 }
             }
-            
+
             if (monster.Actions != null)
             {
                 if (monster.Actions.Length > 0)
@@ -639,9 +664,9 @@ namespace DnD_CM_WPF_Lib
                     }
                 }
             }
-            
 
-            
+
+
             if (monster.LegendaryActions != null)
             {
                 if (monster.LegendaryActions.Length > 0)
@@ -657,7 +682,7 @@ namespace DnD_CM_WPF_Lib
                     output.Add(@"</property-block>");
                 }
             }
-            
+
             // Writeout
             output.Add("</stat-block>");
             output.Add("</body>");

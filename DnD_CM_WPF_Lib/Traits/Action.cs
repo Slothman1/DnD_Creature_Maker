@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace DnD_CM_WPF_Lib
 {
@@ -11,10 +6,6 @@ namespace DnD_CM_WPF_Lib
     {
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
-
-        public Action(string title, string description)
-        {
-        }
 
         public string ProperName()
         {

@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 namespace DnD_CM_WPF_Lib
 {
     public class Attack : Action
     {
+        //json public properties issue
         public string AttackType { get; set; }
-        public int Bonus { set; get;}
+        public int Bonus { set; get; }
         public int Reach { get; set; }
         public string Target { get; set; }
         private string _damage;
@@ -21,10 +17,8 @@ namespace DnD_CM_WPF_Lib
         public string ExtraDamageType { get; set; }
         public string Range { get; set; }
         public string Uses { get; set; }
-        public Attack() :
-            base("temp", "temp")
+        public Attack()
         {
-            Console.WriteLine(Name);
         }
     }
 }
